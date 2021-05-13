@@ -67,7 +67,7 @@ class Cert:
             self.college_name, fill=text_color, font=font_for_college_name)
 
         # Adding reference to db
-        cert_ref_id = save_ref(event_id, recipient_email)
+        cert_ref_id = save_ref(event_id, recipient_email, recipient_name)
 
         # generating and pasting QR Code
         qr = qrcode.QRCode(
@@ -77,7 +77,7 @@ class Cert:
             border=4,
         )
         # TODO: change QR Data URL given for production
-        qr_data = "http://localhost:3000/cv/{}".format(cert_ref_id) if execution_mode == 'test' else "http://localhost:3000/cv/{}".format(cert_ref_id)
+        qr_data = "http://localhost:8000/ref/{}".format(cert_ref_id) if execution_mode == 'test' else "http://localhost:8000/ref/{}".format(cert_ref_id)
         qr.add_data(qr_data)
         qr.make(fit=True)
         qr_img = qr.make_image(fill_color="black", back_color="white")
