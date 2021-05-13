@@ -1,0 +1,11 @@
+.idea
+node_modules
+.env
+gibberish.txt
+keys
+certificateTemplates
+venv
+fileSystem
+generated_certificates
+
+
