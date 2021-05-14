@@ -1,0 +1,246 @@
+{
+  "SB Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Winners": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "position_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Volunteers": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Coordinators": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    }
+  },
+  "CS Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Winners": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "position_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    }
+  },
+  "IAS Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Winners": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "position_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    }
+  },
+  "WIE Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    },
+    "Winners": {
+      "position_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "college_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "position": {
+        "x": 1200,
+        "y": 1700
+      },
+      "event_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "date_coords": {
+        "x": 1200,
+        "y": 1700
+      },
+      "qrcode_coords": {
+        "x": 1200,
+        "y": 1700
+      }
+    }
+  }
+}

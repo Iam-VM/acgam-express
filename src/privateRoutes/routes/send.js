@@ -20,11 +20,11 @@ sendRouter.post('/', (req, res) => {
         .then((user) => {
             events.findByPk(eventID)
                 .then((event) => {
-                    const eventName = event.dataValues.eventName;
+                    const {eventName, eventStartDate} = event.dataValues;
                     const filePath = path.join(__dirname, '../../../', 'fileSystem', `${crypto.randomBytes(4).toString('hex')}${file.name}`);
                     file.mv(filePath)
                         .then(() => {
-                            const pyProcess = childProcess.spawn('python3', [path.join(__dirname + '/../../scripts/main.py'), templateType, recipientType, eventName, filePath, user._fieldsProto.name.stringValue, email, actionTime, eventID]);
+                            const pyProcess = childProcess.spawn('python3', [path.join(__dirname + '/../../scripts/main.py'), templateType, recipientType, eventName, filePath, user._fieldsProto.name.stringValue, email, actionTime, eventID, eventStartDate]);
                             pyProcess.stdout.on('data', (data) => {
                                 // TEST
                                 console.log(data.toString());
