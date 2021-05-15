@@ -11,8 +11,8 @@ const app = express();
 sequelizeAuthenticate(sequelize);
 app.use(express.urlencoded());  // To parse URL-encoded bodies
 app.use(express.json()); //To parse JSON bodies
-// app.use(cors);
-// app.use(express.static(path.join(__dirname,'../',  'build')));
+
+app.use(express.static(path.join(__dirname,'../',  'build')));
 
 
 
@@ -22,9 +22,9 @@ app.use('/private', privateRouter);
 
 
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
 
 
 app.listen(PORT, () => {
