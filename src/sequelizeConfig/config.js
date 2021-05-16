@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
 
-const database = process.env.HEROKU_POSTGRES_DATABASE;
-const username = process.env.HEROKU_POSTGRES_USER;
-const password = process.env.HEROKU_POSTGRES_PASSWORD;
-const host = process.env.HEROKU_POSTGRES_HOST;
+const database = process.env.POSTGRES_DATABASE;
+const username = process.env.POSTGRES_USER;
+const password = process.env.POSTGRES_PASSWORD;
+const host = process.env.POSTGRES_HOST;
 
 const sequelize = new Sequelize(database, username, password, {
     host: host,
@@ -14,6 +14,5 @@ const sequelize = new Sequelize(database, username, password, {
         }
     }
 });
-
 
 module.exports = sequelize;

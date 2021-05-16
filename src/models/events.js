@@ -5,7 +5,7 @@ const Events = sequelize.define('event', {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     eventName: {
         type: DataTypes.STRING,
