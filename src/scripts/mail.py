@@ -9,7 +9,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.header import Header
 from email.utils import formataddr
-from log_ref_in_db import save_ref
 
 
 def mail(cert, recipient_email):
@@ -76,9 +75,6 @@ def mail(cert, recipient_email):
 
         except Exception as e:
             print("mail-mail: {}".format(e))
-
-
-
 
 
 def zip_dir(to_zip_dir_name, purpose):

@@ -35,7 +35,8 @@ if __name__ == '__main__':
 
     dir_name = str(binascii.b2a_hex(os.urandom(4)), 'UTF-8')
     cert_gen_dir_path = "./generated_certificates/{}".format(dir_name) if (execution_mode == 'test') else "src/scripts/generated_certificates/{}".format(dir_name)
-    os.mkdir(cert_gen_dir_path)
+    if not os.path.exists(cert_gen_dir_path):
+        os.mkdir(cert_gen_dir_path)
 
     try:
         cert = Cert(template_type, recipient_type, event_name, event_start_date)

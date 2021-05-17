@@ -100,11 +100,11 @@ class Cert:
             border=4,
         )
         # TODO: change QR Data URL given for production
-        qr_data = "http://localhost:8000/ref/{}".format(cert_ref_id) if self.execution_mode == 'test' else "http://localhost:8000/ref/{}".format(cert_ref_id)
+        qr_data = "https://certvalidator.herokuapp.com/ref/{}".format(cert_ref_id) if self.execution_mode == 'test' else "https://certvalidator.herokuapp.com/ref/{}".format(cert_ref_id)
         qr.add_data(qr_data)
         qr.make(fit=True)
         qr_img = qr.make_image(fill_color="black", back_color="white")
-        image.paste(qr_img, (2000, 3000))
+        image.paste(qr_img, self.qrcode_coords)
 
         # saving image
         cert_save_path = "./generated_certificates/{}/{}".format(dir_name, self.recipient_name + ".pdf") if (self.execution_mode == 'test') else "src/scripts/generated_certificates/{}/{}".format(dir_name, self.recipient_name + ".pdf")

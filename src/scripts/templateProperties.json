@@ -2,244 +2,244 @@
   "SB Template": {
     "Participants": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
         "x": 1200,
-        "y": 1700
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Winners": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "position_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2200
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Volunteers": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Coordinators": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     }
   },
   "CS Template": {
     "Participants": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Winners": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "position_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2200
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     }
   },
   "IAS Template": {
     "Participants": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Winners": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "position_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2200
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     }
   },
   "WIE Template": {
     "Participants": {
       "name_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2100
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     },
     "Winners": {
-      "position_coords": {
-        "x": 1200,
-        "y": 1700
+      "name_coords": {
+        "x": 1240,
+        "y": 1550
       },
       "college_coords": {
-        "x": 1200,
+        "x": 1240,
         "y": 1700
       },
-      "position": {
-        "x": 1200,
-        "y": 1700
+      "position_coords": {
+        "x": 1240,
+        "y": 2100
       },
       "event_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2000
       },
       "date_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 1240,
+        "y": 2200
       },
       "qrcode_coords": {
-        "x": 1200,
-        "y": 1700
+        "x": 250,
+        "y": 250
       }
     }
   }
