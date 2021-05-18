@@ -15,9 +15,11 @@ addEventRouter.post('/add', (req, res) => {
     })
         .then(() => {
             console.log("added event");
+            res.status(200).send("Event added successfully");
         })
         .catch((err) => {
             console.log(err + "couldn't add event");
+            res.status(500).send("Sorry, there was a problem");
         })
 });
 
@@ -27,12 +29,13 @@ addEventRouter.get('/fetch-all', (req, res) => {
     })
         .then((events) => {
             const data = events.map((event) => event.dataValues);
-            res.send(data);
+            res.status(200).send(data);
         })
         .catch(err => {
             console.log("An error occurred during fetching events\n----------------------");
             console.log(err);
             console.log('\n----------------------');
+            res.status(500).send("Server error");
         })
 });
 
