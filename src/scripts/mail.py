@@ -177,7 +177,7 @@ def mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_con
 def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_completed, action_time, error_email_list):
     execution_mode = os.environ['EXECUTION_MODE']
 
-    print("Notifying action to authorities...")
+    sys.stdout.write("Notifying action to authorities...")
     sys.stdout.flush()
 
     zipped_file_path = zip_dir(dir_name, purpose)
@@ -226,10 +226,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time,"green" if successfully_completed else "red", successfully_completed)
         mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path if error_email_list else None)
 
-    print("Notified...")
-    sys.stdout.flush()
-
-    print("Sending you backup zip...")
+    sys.stdout.write("Sending you backup zip...")
     sys.stdout.flush()
 
     subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Backup")
@@ -263,5 +260,5 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                         """.format(auth_user_name, purpose, "" if successfully_completed else ", but incomplete", action_time,"green" if successfully_completed else "red", successfully_completed)
     mail_zip(zipped_file_path, auth_user_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path if error_email_list else None)
 
-    print("Backup sent....")
+    sys.stdout.write("Backup sent....")
     sys.stdout.flush()

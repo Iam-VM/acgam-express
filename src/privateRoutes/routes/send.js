@@ -64,8 +64,11 @@ sendRouter.post('/', (req, res) => {
                                     if (["CSV File Poorly Formatted", "Certificate Template Not Found"].includes(data)) {
                                         res.status(200).send(data);
                                     }
-                                    if (data === 'exit') {
+                                    else if (data === 'exit') {
                                         res.status(200).send("Action completed successfully. Please Check your email for more info.");
+                                    }
+                                    else {
+                                        req.io.emit("log", `${data}`);
                                     }
                                 });
 
