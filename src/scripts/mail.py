@@ -226,7 +226,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time,"green" if successfully_completed else "red", successfully_completed)
         mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path if error_email_list else None)
 
-    sys.stdout.write("Sending you backup zip...")
+    sys.stdout.write("Sending backup zip to you...")
     sys.stdout.flush()
 
     subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Backup")
