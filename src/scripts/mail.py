@@ -1,6 +1,8 @@
 import os
+import sys
 from zipfile import ZipFile
 from dotenv import load_dotenv
+import pandas as pd
 import smtplib
 import ssl
 from email import encoders
@@ -12,6 +14,9 @@ from email.utils import formataddr
 
 
 def mail(cert, recipient_email):
+    print("Sending certificate to {}".format(recipient_email))
+    sys.stdout.flush()
+
     load_dotenv()
     port = 465
     sender_email = os.environ.get('SENDER_EMAIL')
@@ -72,9 +77,13 @@ def mail(cert, recipient_email):
         try:
             gmail_smtp_server.login(sender_email, sender_password)
             gmail_smtp_server.sendmail(sender_email, recipient_email, message.as_string())
-
+            print("Successfully sent mail to {}".format(recipient_email))
+            sys.stdout.flush()
+            return None
         except Exception as e:
-            print("mail-mail: {}".format(e))
+            print("Failed sending mail to {}".format(recipient_email))
+            sys.stdout.flush()
+            return recipient_email
 
 
 def zip_dir(to_zip_dir_name, purpose):
@@ -97,7 +106,7 @@ def zip_dir(to_zip_dir_name, purpose):
     return out_file_path
 
 
-def mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string):
+def mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path):
     load_dotenv()
     port = 465
     sender_email = os.environ.get('SENDER_EMAIL')
@@ -135,6 +144,24 @@ def mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_con
     # Add attachment to message and convert message to string
     message.attach(attachment_part)
 
+    if mail_not_send_csv_path is not None:
+        # Open PDF file in binary mode
+        with open(mail_not_send_csv_path, "rb") as attachment:
+            # Add file as application/octet-stream
+            # Email client can usually download this automatically as attachment
+            attachment_part = MIMEBase("application", "csv")
+            attachment_part.set_payload(attachment.read())
+
+        # 'Content-Disposition' Response header because content is expected to be locally downloadable
+        # filename parameter specifies the filename of the file received by the recipient.
+        attachment_part.add_header("Content-Disposition", "attachment", filename='mail_not_send.csv')
+
+        # Encodes the payload into base64 form and sets the Content-Transfer-Encoding header to base64
+        encoders.encode_base64(attachment_part)
+
+        # Add attachment to message and convert message to string
+        message.attach(attachment_part)
+
     # creates an ssl context and verifies its certificates
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as gmail_smtp_server:
@@ -143,16 +170,27 @@ def mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_con
             gmail_smtp_server.sendmail(sender_email, recipient_email, message.as_string())
 
         except Exception as e:
-            print("mail-mailZip: {}".format(e))
+            sys.stderr.write("Cert Mail Zip: {}".format(e))
+            sys.stderr.flush()
 
 
-def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_completed, action_time):
+def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_completed, action_time, error_email_list):
+    execution_mode = os.environ['EXECUTION_MODE']
+
+    print("Notifying action to authorities...")
+    sys.stdout.flush()
+
     zipped_file_path = zip_dir(dir_name, purpose)
     recipient_emails = [os.environ.get('MAINTAINER_EMAIL'), os.environ.get('CHAIR_EMAIL')]
     recipient_names = [os.environ.get('MAINTAINER_NAME'), os.environ.get('CHAIR_NAME')]
 
-    # auth_time = datetime.utcfromtimestamp(auth_time).strftime('%Y-%m-%dT%H:%M:%SZ')
-    # action_time = datetime.utcfromtimestamp(action_time).strftime('%Y-%m-%dT%H:%M:%SZ')
+    mail_not_send = {
+        "Mail not sent to": error_email_list
+    }
+
+    mail_not_send = pd.DataFrame(mail_not_send)
+    mail_not_send_csv_path = './generated_certificates/mail_not_send.csv' if execution_mode == 'test' else 'src/scripts/generated_certificates/mail_not_send.csv'
+    mail_not_send.to_csv(mail_not_send_csv_path)
 
     for recipient_email, recipient_name in zip(recipient_emails, recipient_names):
         subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Notification")
@@ -186,7 +224,13 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                       </body>
                     </html>
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time,"green" if successfully_completed else "red", successfully_completed)
-        mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string)
+        mail_zip(zipped_file_path, recipient_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path if error_email_list else None)
+
+    print("Notified...")
+    sys.stdout.flush()
+
+    print("Sending you backup zip...")
+    sys.stdout.flush()
 
     subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Backup")
 
@@ -217,4 +261,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                           </body>
                         </html>
                         """.format(auth_user_name, purpose, "" if successfully_completed else ", but incomplete", action_time,"green" if successfully_completed else "red", successfully_completed)
-    mail_zip(zipped_file_path, auth_user_email, purpose, subject_line, plain_content_string, html_content_string)
+    mail_zip(zipped_file_path, auth_user_email, purpose, subject_line, plain_content_string, html_content_string, mail_not_send_csv_path if error_email_list else None)
+
+    print("Backup sent....")
+    sys.stdout.flush()

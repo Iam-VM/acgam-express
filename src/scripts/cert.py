@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 from PIL import Image, ImageDraw, ImageFont
 import qrcode
@@ -19,7 +20,7 @@ class Cert:
         "Coordinators": "Coordinator Certificate"
     }
 
-    def __init__(self, template_type, recipient_type, event_name, event_start_date,):
+    def __init__(self, template_type, recipient_type, event_name, event_start_date, is_winner, template_path):
         self.execution_mode = os.environ.get('EXECUTION_MODE')
 
         self.template_type = template_type
@@ -31,8 +32,9 @@ class Cert:
         self.college_name = None
         self.recipient_name = None
         self.cert_path = None
+        self.is_winner = is_winner
 
-        self.template_path = '../../fileSystem/certificateTemplates/{} {}.png'.format(self.template_type, self.recipient_type) if (self.execution_mode == 'test') else 'fileSystem/certificateTemplates/{} {}.png'.format(self.template_type, self.recipient_type)
+        self.template_path = template_path
 
         json_file = open('./templateProperties.json' if self.execution_mode == 'test' else 'src/scripts/templateProperties.json', 'r')
         template_properties = json.load(json_file)[self.template_type][self.recipient_type]
@@ -42,7 +44,7 @@ class Cert:
         self.name_coords = (template_properties["name_coords"]["x"], template_properties["name_coords"]["y"])
         self.college_coords = (template_properties["college_coords"]["x"], template_properties["college_coords"]["y"])
         self.event_coords = (template_properties["event_coords"]["x"], template_properties["event_coords"]["y"])
-        self.position_coords = None if recipient_type != "Winners" else (template_properties["position_coords"]["x"], template_properties["position_coords"]["y"])
+        self.position_coords = None if not self.is_winner else (template_properties["position_coords"]["x"], template_properties["position_coords"]["y"])
         self.qrcode_coords = (template_properties["qrcode_coords"]["x"], template_properties["qrcode_coords"]["y"])
         self.date_coords = (template_properties["date_coords"]["x"], template_properties["date_coords"]["y"])
 
@@ -61,7 +63,8 @@ class Cert:
         self.font_for_position = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Regular.ttf", 50)
 
     def create(self, recipient_name, college_name, winner_position, dir_name, event_id, recipient_email):
-
+        print("creating certificate for {}".format(recipient_name))
+        sys.stdout.flush()
         self.recipient_name = recipient_name
         self.college_name = college_name
 
@@ -78,7 +81,7 @@ class Cert:
         event_line_width, event_line_height = d.textsize(self.event_name, self.font_for_event)
         college_name_line_width, college_name_line_height = d.textsize(self.college_name, self.font_for_college)
         date_line_width, date_line_height = d.textsize(self.event_start_date, self.font_for_date)
-        if winner_position is not None:
+        if self.is_winner:
             position_line_width, position_line_height = d.textsize(winner_position, self.font_for_event)
 
         # writing text on image
@@ -109,7 +112,6 @@ class Cert:
         # saving image
         cert_save_path = "./generated_certificates/{}/{}".format(dir_name, self.recipient_name + ".pdf") if (self.execution_mode == 'test') else "src/scripts/generated_certificates/{}/{}".format(dir_name, self.recipient_name + ".pdf")
         image.save(cert_save_path)
-        print('saving cert of: ' + self.recipient_name)
 
         self.cert_path = cert_save_path
         return self.cert_path
