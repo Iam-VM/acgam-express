@@ -61,7 +61,7 @@ sendRouter.post('/', (req, res) => {
                                 pyProcess.stdout.on('data', (data) => {
                                     data = data.toString();
                                     console.log(data);
-                                    if (["CSV File Poorly Formatted", "Certificate Template Not Found"].includes(data)) {
+                                    if (["CSV File Poorly Formatted", "Certificate Template Not Found", "There was an issue."].includes(data)) {
                                         res.status(200).send(data);
                                     }
                                     else if (data === 'exit') {

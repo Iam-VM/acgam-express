@@ -86,17 +86,37 @@ if __name__ == '__main__':
         sys.stdout.flush()
         if os.path.exists(cert_gen_dir_path):
             if len(os.listdir(cert_gen_dir_path)) != 0:
-                notify(cert_gen_dir_path, auth_user_email, auth_user_name, purpose, False, action_time, email_error_list)
-                # TODO: Complete this
+                try:
+                    notify(cert_gen_dir_path, auth_user_email, auth_user_name, purpose, False, action_time, email_error_list, csv_file_path)
+                except Exception as e:
+                    shutil.rmtree(cert_gen_dir_path)
+                    os.remove(csv_file_path)
+                    sys.stdout.write("There was an issue.")
+                    sys.stdout.flush()
+                    sys.stdout.write("exit")
+                    sys.stdout.flush()
+                    exit()
                 shutil.rmtree(cert_gen_dir_path)
                 os.remove(csv_file_path)
                 sys.stdout.flush()
+            else:
+                os.rmdir(cert_gen_dir_path)
+        os.remove(csv_file_path)
+        sys.stdout.write("There was an issue.")
         sys.stdout.flush()
         sys.stdout.write("exit")
         sys.stdout.flush()
         exit()
 
-    notify(cert_gen_dir_path, auth_user_email, auth_user_name, purpose, True, action_time, email_error_list)
+    try:
+        notify(cert_gen_dir_path, auth_user_email, auth_user_name, purpose, True, action_time, email_error_list, csv_file_path)
+    except Exception as e:
+        shutil.rmtree(cert_gen_dir_path)
+        os.remove(csv_file_path)
+        sys.stdout.flush()
+        sys.stdout.write("exit")
+        sys.stdout.flush()
+        exit()
     shutil.rmtree(os.path.join(cert_gen_dir_path, "..", "zipped"))
     os.remove(csv_file_path)
     shutil.rmtree(cert_gen_dir_path)

@@ -3,93 +3,89 @@
     "Participants": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1500
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
-        "x": 1200,
-        "y": 2100
+        "x": 1240,
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Winners": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1400
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "position_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 1650
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2200
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Volunteers": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1518
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Coordinators": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1518
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     }
   },
@@ -97,49 +93,47 @@
     "Participants": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1500
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Winners": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1400
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "position_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 1650
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2200
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     }
   },
@@ -147,49 +141,47 @@
     "Participants": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1500
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Winners": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1400
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "position_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 1650
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2200
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     }
   },
@@ -197,49 +189,47 @@
     "Participants": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1500
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     },
     "Winners": {
       "name_coords": {
         "x": 1240,
-        "y": 1550
+        "y": 1400
       },
       "college_coords": {
-        "x": 1240,
-        "y": 1700
+        "x": 1240
       },
       "position_coords": {
         "x": 1240,
-        "y": 2100
+        "y": 1650
       },
       "event_coords": {
         "x": 1240,
-        "y": 2000
+        "y": 1900
       },
       "date_coords": {
         "x": 1240,
-        "y": 2200
+        "y": 2350
       },
       "qrcode_coords": {
-        "x": 250,
-        "y": 250
+        "x": 265,
+        "y": 350
       }
     }
   }
