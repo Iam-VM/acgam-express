@@ -6,6 +6,7 @@ import qrcode
 from log_ref_in_db import save_ref
 import textwrap
 from datetime import datetime
+from num2words import num2words
 
 
 class Cert:
@@ -81,19 +82,19 @@ class Cert:
         # CALCULATING TOTAL HEIGHT FROM NAME AND COLLEGE
         lines = textwrap.wrap(self.recipient_name.title(), width=25)
         total_text_height = 0
-        for line in lines:
+        for line in lines[:1 if self.is_winner else 2]:
             width, height = d.textsize(line, self.font_for_name)
             total_text_height += height
         total_text_height += 50
         lines = textwrap.wrap(self.college_name.upper(), width=32)
-        for line in lines:
+        for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_college)
             total_text_height += height
 
         # DRAWING NAME
         lines = textwrap.wrap(recipient_name.title(), width=25)
         y_text = self.name_coords[1]
-        for line in lines:
+        for line in lines[:1 if self.is_winner else 2]:
             width, height = d.textsize(line, self.font_for_name)
             d.text((self.name_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_name, fill=self.text_color_name)
             y_text += height
@@ -101,7 +102,7 @@ class Cert:
         # DRAWING College
         y_text = y_text + 50
         lines = textwrap.wrap(college_name.upper(), width=32)
-        for line in lines:
+        for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_college)
             d.text((self.college_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_college,
                    fill=self.text_color_college)
@@ -110,21 +111,23 @@ class Cert:
         # CALCULATING AND DRAWING FOR EVENT NAME
         lines = textwrap.wrap(self.event_name.upper(), width=32)
         total_text_height = 0
-        for line in lines:
+        for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_event)
             total_text_height += height
         y_text = self.event_coords[1]
-        for line in lines:
+        for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_event)
             d.text((self.event_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_event, fill=self.text_color_event)
             y_text += height
 
         # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING DATE
         date_obj = datetime.strptime(self.event_start_date, '%Y-%m-%d')
-        date_in_words = datetime.strftime(date_obj, '%B %d, %Y')
-        date_line_width, date_line_height = d.textsize(date_in_words.upper(), self.font_for_date)
+        day = num2words(int(datetime.strftime(date_obj, '%d')), to='ordinal_num')
+        date_in_words = datetime.strftime(date_obj, '%B, %Y').upper()
+        date_in_words = day + " " + date_in_words
+        date_line_width, date_line_height = d.textsize(date_in_words, self.font_for_date)
         d.text((self.date_coords[0] - date_line_width / 2, self.date_coords[1] - date_line_height / 2),
-               date_in_words.upper(), fill=self.text_color_date, font=self.font_for_date)
+               date_in_words, fill=self.text_color_date, font=self.font_for_date)
 
         # CHECKING IS_WINNER, CALCULATING LINE SIZE AND DRAWING POSITION
         if self.is_winner:

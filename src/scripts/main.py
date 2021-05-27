@@ -44,9 +44,12 @@ if __name__ == '__main__':
             college_names = recipient_df['Institution Name'].to_list()
             if recipient_names and recipient_emails and college_names:
                 if len(recipient_names) == len(recipient_emails) == len(college_names):
-                    if is_winner and 'Position' in recipient_df.columns:
-                        winner_positions = recipient_df['Position'].to_list()
-                        if not (len(recipient_names) == len(winner_positions)):
+                    if is_winner:
+                        if 'Position' in recipient_df.columns:
+                            winner_positions = recipient_df['Position'].to_list()
+                            if not (len(recipient_names) == len(winner_positions)):
+                                throw_csv_poorly_formatted(csv_file_path)
+                        else:
                             throw_csv_poorly_formatted(csv_file_path)
                 else:
                     throw_csv_poorly_formatted(csv_file_path)

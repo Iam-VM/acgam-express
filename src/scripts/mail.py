@@ -18,17 +18,18 @@ def mail(cert, recipient_email):
     sys.stdout.flush()
 
     appreciation = {
-        "Certificate Of Participation": '''
-        
+        "Certificate Of Participation": '''\
+        It was very refreshing to see you join us! Suggestions are always welcome.<Br /><Br />
+        Until next time.
         ''',
         "Certificate of Achievement": '''
-        
+
         ''',
         "Volunteer Certificate": '''
-        
+
         ''',
         "Coordinator Certificate": '''
-        
+
         '''
     }
 
@@ -46,34 +47,36 @@ def mail(cert, recipient_email):
     # content as plain/html text.
     plain_content_string = """\
     Hello {},
-    
+
     Here is your {} for {}.
+
     {}
-    Please find your Certificate as attachment.
-    
+
+    PFA.
+
     Regards,
-    
-    A very lovable Bot,
-    From IEEE SB GEC Palakkad.
-    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title])
+
+
+    From {}.
+    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title], cert.issuing_organization)
 
     html_content_string = """\
     <html>
       <body>
-        <p>Hello, <strong>{}</strong><br /><br />
-           Here is your {} for <span style="color:green;"><strong>{}</strong></span>.<br><br>
-           {}
-           <br><br>
-           Please find your Certificate as attachment.<br /><br /><br />
-           
-            Regards,<br /><br />
-    
-            A very lovable Bot,<br />
-            From IEEE SB GEC Palakkad.<br /><br />
+        <p>Hello <strong>{}</strong>,<br /><br />
+           Here is your {} for <strong>{}</strong>.<br><br>
+            {}
+            <br><br>
+            PFA<br /><br /><br />
+
+            Regards,<br />
+
+
+            From {}.<br /><br /></span>
         </p>
       </body>
     </html>
-    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title])
+    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title], cert.issuing_organization)
 
     # converting content to respective MIMEText objects
     plain_part = MIMEText(plain_content_string, "plain")
@@ -238,29 +241,34 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
 
         plain_content_string = """\
                     Hello {},
-                    
-                    {} were issued{}.
-                    
+
+                    {} - issued{}.
+
                     -----------------------------
                     Action Authenticated by {}
                     Action Time: {}
                     Action Successfully Completed: {}
                     ------------------------------
-                    
+
                     Please find the Zipped Backup as attachment.
+                    
+                    Regards,
+                    Bot.
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time, successfully_completed)
 
         html_content_string = """\
                     <html>
                       <body>
                         <p>Hello, <strong>{}</strong><br><br>
-                            {} were issued{}.<br><br>
+                            {} - issued{}.<br><br>
                             -----------------------------<br>
                             Action Authenticated by {}.<br>
                             Action Time: {}<br>
                             Action Successfully Completed: <span style=\"color:{}\">{}</span><br>
                             -----------------------------<br><br>
-                            Please find the Zipped Backup as attachment.
+                            Please find the Zipped Backup as attachment.<br /><br />
+                            Regards,<br />
+                            Bot.<br /><br />
                         </p>
                       </body>
                     </html>
@@ -275,26 +283,31 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
     plain_content_string = """\
                         Hello {},
 
-                        {} were issued{}.
-                        
+                        {} - issued{}.
+
                         -----------------------------
                         Action Time: {}
                         Action Successfully Completed: {}
                         -----------------------------
-                        
+
                         Please find the Zipped Backup as attachment.
+                        
+                        Regards,
+                        Bot.
                         """.format(auth_user_name, purpose, "" if successfully_completed else ", but incomplete", action_time, successfully_completed)
 
     html_content_string = """\
                         <html>
                           <body>
                             <p>Hello, <strong>{}</strong><br><br>
-                                {} were issued{}.<br><br>
+                                {} - issued{}.<br><br>
                                 -----------------------------<br>
                                 Action Time: {}<br>
                                 Action Successfully Completed: <span style=\"color:{}\">{}</span><br>
                                 -----------------------------<br><br>
-                                Please find the Zipped Backup as attachment.
+                                Please find the Zipped Backup as attachment.<br /><br />
+                                Regards,<br />
+                                Bot.<br /><br />
                             </p>
                           </body>
                         </html>
