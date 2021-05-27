@@ -37,6 +37,10 @@ const resolveTemplateName = (templateName) => {
 
 
 sendRouter.post('/', (req, res) => {
+    res.setTimeout(300000, () => {
+        console.log("/send Timeout");
+        res.send(408);
+    })
     const {eventID, templateName} = req.body;
     const resolvedTemplateName = resolveTemplateName(templateName);
     if (resolvedTemplateName === false) {
