@@ -13,25 +13,118 @@ from email.header import Header
 from email.utils import formataddr
 
 
+def generate_plain_mail_content(recipient_name, certificate_title, event_name, issuing_organization):
+    if certificate_title == "Certificate Of Participation":
+        return '''\
+        Greetings {}! ✨ \n\n
+        {} deeply honours your hearty participation in {}.\n\n
+        Please go through the certificate attached herewith. In case of any issues or queries please do feel free to mail us. \n\n
+        Do try to participate in the valuable sessions organized by {} in the upcoming days.\n\n
+        Thanking you.
+        '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Certificate of Achievement":
+        return '''\
+               Greetings {}! ✨ \n\n
+               {} deeply honours your hearty participation in {}. We are really glad to announce you as the winner of the competition.\n\n
+               Congratulations!\n\n
+               Please go through the certificate attached herewith.\n
+               In case of any issues or queries please do feel free to mail us.
+               Do try to participate in the valuable sessions organized by {} in the upcoming days. \n\n
+               Thanking you.
+               '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Volunteer Certificate":
+        return '''\
+                Greetings {}! ✨\n\n
+                {} deeply honours your hearty volunteering in organising {}.\n\n
+                Please go through the certificate attached herewith.\n
+                In case of any issues or queries please do feel free to mail us. 
+                Do try to coordinate with {} in the upcoming days! \n\n
+                Thanking you.
+                '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Coordinator Certificate":
+        return '''
+                Greetings {}! ✨<br /><br />
+                {} deeply honours your hearty coordination in organising {}.<br /><br />
+                Please go through the certificate attached herewith.
+                In case of any issues or queries please do feel free to mail us. <br /><br />
+                We expect the same in the upcoming events too!<br /><br />
+                Thanking you.
+                '''.format(recipient_name, issuing_organization, event_name)
+
+
+def generate_html_mail_content(recipient_name, certificate_title, event_name, issuing_organization):
+    if certificate_title == "Certificate Of Participation":
+        return '''\
+                <html>
+                <body>
+                <p>
+                Greetings {}! ✨ <br /><br />
+                {} deeply honours your hearty participation in <strong>{}</strong>.<br /><br />
+                Please go through the certificate attached herewith.
+                In case of any issues or queries please do feel free to mail us. <br /><br />
+                Do try to participate in the valuable sessions organized by <strong>{}</strong> in the upcoming days.<br /><br />
+                Thanking you.
+                </p>
+                </body>
+                </html>
+                '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Certificate of Achievement":
+        return '''\
+                <html>
+                <body>
+                <p>
+                Greetings {}! ✨ <br /><br />
+                {} deeply honours your hearty participation in <strong>{}</strong>. We are really glad to announce you as the winner of the competition.<br /><br />
+                Congratulations!<br /><br />
+                Please go through the certificate attached herewith.<br />
+                In case of any issues or queries please do feel free to mail us.
+                Do try to participate in the valuable sessions organized by <strong>{}</strong> in the upcoming days. <br /><br />
+                Thanking you.
+                </p>
+                </body>
+                </html>
+                '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Volunteer Certificate":
+        return '''\
+                <html>
+                <body>
+                <p>
+                Greetings {}! ✨<br /><br />
+                {} deeply honours your hearty volunteering in organising <strong>{}</strong>.<br /><br />
+                Please go through the certificate attached herewith.<br />
+                In case of any issues or queries please do feel free to mail us. 
+                Do try to coordinate with <strong>{}</strong> in the upcoming days! <br /><br />
+                Thanking you.
+                </p>
+                </body>
+                </html>
+                '''.format(recipient_name, issuing_organization, event_name, issuing_organization)
+
+    elif certificate_title == "Coordinator Certificate":
+        return '''
+                <html>
+                <body>
+                <p>
+               Greetings {}! ✨<br /><br />
+               {} deeply honours your hearty coordination in organising <strong>{}</strong>.<br /><br />
+               Please go through the certificate attached herewith.
+               In case of any issues or queries please do feel free to mail us. <br /><br />
+               We expect the same in the upcoming events too!<br /><br />
+               Thanking you.
+               </p>
+                </body>
+                </html>
+               '''.format(recipient_name, issuing_organization, event_name)
+
+
 def mail(cert, recipient_email):
     print("sending certificate to {}".format(recipient_email))
     sys.stdout.flush()
-
-    appreciation = {
-        "Certificate Of Participation": '''\
-        It was very refreshing to see you join us! Suggestions are always welcome.<Br /><Br />
-        Until next time.
-        ''',
-        "Certificate of Achievement": '''
-
-        ''',
-        "Volunteer Certificate": '''
-
-        ''',
-        "Coordinator Certificate": '''
-
-        '''
-    }
 
     load_dotenv()
     port = 465
@@ -45,38 +138,9 @@ def mail(cert, recipient_email):
     message["To"] = recipient_email
 
     # content as plain/html text.
-    plain_content_string = """\
-    Hello {},
+    plain_content_string = generate_plain_mail_content(cert.recipient_name, cert.certificate_title, cert.event_name, cert.issuing_organization)
 
-    Here is your {} for {}.
-
-    {}
-
-    PFA.
-
-    Regards,
-
-
-    From {}.
-    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title], cert.issuing_organization)
-
-    html_content_string = """\
-    <html>
-      <body>
-        <p>Hello <strong>{}</strong>,<br /><br />
-           Here is your {} for <strong>{}</strong>.<br><br>
-            {}
-            <br><br>
-            PFA<br /><br /><br />
-
-            Regards,<br />
-
-
-            From {}.<br /><br /></span>
-        </p>
-      </body>
-    </html>
-    """.format(cert.recipient_name, cert.certificate_title, cert.event_name, appreciation[cert.certificate_title], cert.issuing_organization)
+    html_content_string = generate_html_mail_content(cert.recipient_name, cert.certificate_title, cert.event_name, cert.issuing_organization)
 
     # converting content to respective MIMEText objects
     plain_part = MIMEText(plain_content_string, "plain")
@@ -251,7 +315,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                     ------------------------------
 
                     Please find the Zipped Backup as attachment.
-                    
+
                     Regards,
                     Bot.
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time, successfully_completed)
@@ -291,7 +355,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                         -----------------------------
 
                         Please find the Zipped Backup as attachment.
-                        
+
                         Regards,
                         Bot.
                         """.format(auth_user_name, purpose, "" if successfully_completed else ", but incomplete", action_time, successfully_completed)
