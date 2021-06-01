@@ -304,7 +304,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
         subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Notification")
 
         plain_content_string = """\
-                    Hello {},
+                    Hii {},
 
                     {} - issued{}.
 
@@ -315,15 +315,17 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                     ------------------------------
 
                     Please find the Zipped Backup as attachment.
-
+                    
                     Regards,
-                    Bot.
+                    ACGAM.
+                    ,
+                    .
                     """.format(recipient_name, purpose, "" if successfully_completed else ", but incomplete", auth_user_name, action_time, successfully_completed)
 
         html_content_string = """\
                     <html>
                       <body>
-                        <p>Hello, <strong>{}</strong><br><br>
+                        <p>Hii, <strong>{}</strong><br><br>
                             {} - issued{}.<br><br>
                             -----------------------------<br>
                             Action Authenticated by {}.<br>
@@ -332,7 +334,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                             -----------------------------<br><br>
                             Please find the Zipped Backup as attachment.<br /><br />
                             Regards,<br />
-                            Bot.<br /><br />
+                            ACGAM.<br /><br />
                         </p>
                       </body>
                     </html>
@@ -345,7 +347,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
     subject_line = "{} | {} | {}".format(os.environ.get('APP_NAME'), purpose, "Backup")
 
     plain_content_string = """\
-                        Hello {},
+                        Hii {},
 
                         {} - issued{}.
 
@@ -357,13 +359,13 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                         Please find the Zipped Backup as attachment.
 
                         Regards,
-                        Bot.
+                        ACGAM.
                         """.format(auth_user_name, purpose, "" if successfully_completed else ", but incomplete", action_time, successfully_completed)
 
     html_content_string = """\
                         <html>
                           <body>
-                            <p>Hello, <strong>{}</strong><br><br>
+                            <p>Hii, <strong>{}</strong><br><br>
                                 {} - issued{}.<br><br>
                                 -----------------------------<br>
                                 Action Time: {}<br>
@@ -371,7 +373,7 @@ def notify(dir_name, auth_user_email, auth_user_name, purpose, successfully_comp
                                 -----------------------------<br><br>
                                 Please find the Zipped Backup as attachment.<br /><br />
                                 Regards,<br />
-                                Bot.<br /><br />
+                                ACGAM.<br /><br />
                             </p>
                           </body>
                         </html>
