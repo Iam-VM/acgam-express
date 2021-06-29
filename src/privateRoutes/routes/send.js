@@ -19,7 +19,9 @@ const resolveTemplateName = (templateName) => {
         "IAS Template - Participants",
         "IAS Template - Winners",
         "WIE Template - Participants",
-        "WIE Template - Winners"
+        "WIE Template - Winners",
+        "Excelsior21 - Participants",
+        "Excelsior21 - Winners"
     ];
 
     if (validTemplateTypes.includes(templateName)) {

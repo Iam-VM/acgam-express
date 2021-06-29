@@ -121,6 +121,8 @@ class Cert:
             y_text += height
 
         # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING DATE
+        self.event_start_date = self.event_start_date.strip()
+        self.event_start_date = self.event_start_date.split()[0]
         date_obj = datetime.strptime(self.event_start_date, '%Y-%m-%d')
         day = num2words(int(datetime.strftime(date_obj, '%d')), to='ordinal_num')
         date_in_words = datetime.strftime(date_obj, '%B, %Y').upper()
