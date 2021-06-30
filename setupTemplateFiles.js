@@ -14,8 +14,10 @@ const certTemplateFileNames = [
     'certificateTemplates/IAS Template Winners.png',
     'certificateTemplates/WIE Template Participants.png',
     'certificateTemplates/WIE Template Winners.png',
-    'certificateTemplates/Excelsior21 Template Participants.png',
-    'certificateTemplates/Excelsior21 Template Winners.png',
+    'certificateTemplates/Excelsior21SB Template Participants.png',
+    'certificateTemplates/Excelsior21CS Template Participants.png',
+    'certificateTemplates/Excelsior21IAS Template Participants.png',
+    'certificateTemplates/Excelsior21SB Template Winners.png',
 ];
 
 const csvTemplateFileNames = [
