@@ -16,6 +16,7 @@ class Cert:
         "IAS Template": "IEEE IAS SBC GEC Palakkad",
         "WIE Template": "IEEE WIE AG GEC Palakkad",
         "Excelsior21SB Template": "IEEE SB GEC Palakkad",
+        "Excelsior21FROMSB Template": "IEEE SB GEC Palakkad",
         "Excelsior21CS Template": "IEEE CS SBC GEC Palakkad",
         "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad"
     }

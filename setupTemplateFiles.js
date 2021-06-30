@@ -15,6 +15,7 @@ const certTemplateFileNames = [
     'certificateTemplates/WIE Template Participants.png',
     'certificateTemplates/WIE Template Winners.png',
     'certificateTemplates/Excelsior21SB Template Participants.png',
+    'certificateTemplates/Excelsior21FROMSB Template Participants.png',
     'certificateTemplates/Excelsior21CS Template Participants.png',
     'certificateTemplates/Excelsior21IAS Template Participants.png',
     'certificateTemplates/Excelsior21SB Template Winners.png',
