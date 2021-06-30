@@ -64,7 +64,7 @@ class Cert:
         self.text_color_date = '#707070'
         self.text_color_position = '#707071'
         # Face
-        self.font_for_name = ImageFont.truetype("./fonts/Philosopher-BoldItalic.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-BoldItalic.ttf", 85)
+        self.font_for_name = ImageFont.truetype("./fonts/Philosopher-Bold.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Bold.ttf", 85)
         self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_college = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Regular.ttf", 50)
         self.font_for_issuing_organization = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
