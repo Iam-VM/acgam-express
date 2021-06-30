@@ -15,7 +15,9 @@ class Cert:
         "CS Template": "IEEE CS SBC GEC Palakkad",
         "IAS Template": "IEEE IAS SBC GEC Palakkad",
         "WIE Template": "IEEE WIE AG GEC Palakkad",
-        "Excelsior21 Template": "IEEE SB GEC Palakkad"
+        "Excelsior21SB Template": "IEEE SB GEC Palakkad",
+        "Excelsior21CS Template": "IEEE CS SBC GEC Palakkad",
+        "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad"
     }
     certificate_titles = {
         "Participants": "Certificate Of Participation",
@@ -48,6 +50,7 @@ class Cert:
         self.name_coords = (template_properties["name_coords"]["x"], template_properties["name_coords"]["y"])
         self.college_coords = (template_properties["college_coords"]["x"], )
         self.event_coords = (template_properties["event_coords"]["x"], template_properties["event_coords"]["y"])
+        self.issuing_organization_coords = (template_properties["issuing_organization_coords"]["x"], template_properties["issuing_organization_coords"]["y"])
         self.position_coords = None if not self.is_winner else (template_properties["position_coords"]["x"], template_properties["position_coords"]["y"])
         self.qrcode_coords = (template_properties["qrcode_coords"]["x"], template_properties["qrcode_coords"]["y"])
         self.date_coords = (template_properties["date_coords"]["x"], template_properties["date_coords"]["y"])
@@ -57,12 +60,14 @@ class Cert:
         self.text_color_name = '#012f31'
         self.text_color_college = '#012f31'
         self.text_color_event = '#707071'
+        self.text_color_issuing_organization = '#707071'
         self.text_color_date = '#707070'
         self.text_color_position = '#707071'
         # Face
         self.font_for_name = ImageFont.truetype("./fonts/Philosopher-BoldItalic.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-BoldItalic.ttf", 85)
         self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_college = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Regular.ttf", 50)
+        self.font_for_issuing_organization = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_date = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_position = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
 
@@ -93,7 +98,7 @@ class Cert:
             total_text_height += height
 
         # DRAWING NAME
-        lines = textwrap.wrap(recipient_name.title(), width=25)
+        lines = textwrap.wrap(recipient_name.upper(), width=25)
         y_text = self.name_coords[1]
         for line in lines[:1 if self.is_winner else 2]:
             width, height = d.textsize(line, self.font_for_name)
@@ -103,6 +108,7 @@ class Cert:
         # DRAWING College
         y_text = y_text + 50
         lines = textwrap.wrap(college_name.upper(), width=32)
+        # lines = textwrap.wrap(college_name.upper(), width=42)
         for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_college)
             d.text((self.college_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_college,
@@ -111,6 +117,7 @@ class Cert:
 
         # CALCULATING AND DRAWING FOR EVENT NAME
         lines = textwrap.wrap(self.event_name.upper(), width=32)
+        # lines = textwrap.wrap(self.event_name.upper(), width=42)
         total_text_height = 0
         for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_event)
@@ -120,6 +127,21 @@ class Cert:
             width, height = d.textsize(line, self.font_for_event)
             d.text((self.event_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_event, fill=self.text_color_event)
             y_text += height
+
+        # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING ISSUING ORGANIZATION
+        if self.template_type in ["Excelsior21SB Template", "Excelsior21CS Template", "Excelsior21IAS Template"]:
+            lines = textwrap.wrap(self.issuing_organization.upper(), width=32)
+            total_text_height = 0
+            for line in lines[:2]:
+                width, height = d.textsize(line, self.font_for_issuing_organization)
+                total_text_height += height
+            y_text = self.issuing_organization_coords[1]
+            for line in lines[:2]:
+                width, height = d.textsize(line, self.font_for_issuing_organization)
+                d.text((self.issuing_organization_coords[0] - width / 2, y_text - total_text_height / 2), line,
+                       font=self.font_for_issuing_organization,
+                       fill=self.text_color_event)
+                y_text += height
 
         # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING DATE
         self.event_start_date = self.event_start_date.strip()

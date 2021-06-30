@@ -20,8 +20,10 @@ const resolveTemplateName = (templateName) => {
         "IAS Template - Winners",
         "WIE Template - Participants",
         "WIE Template - Winners",
-        "Excelsior21 Template - Participants",
-        "Excelsior21 Template - Winners"
+        "Excelsior21SB Template - Participants",
+        "Excelsior21CS Template - Participants",
+        "Excelsior21IAS Template - Participants",
+        "Excelsior21SB Template - Winners"
     ];
 
     if (validTemplateTypes.includes(templateName)) {
@@ -102,7 +104,6 @@ sendRouter.post('/', (req, res) => {
                 res.status(500).send("There was a problem while Processing, please contact Website admin.")
             })
     }
-
 });
 
 sendRouter.get('*', (req, res) => {
