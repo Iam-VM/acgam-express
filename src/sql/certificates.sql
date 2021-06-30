@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS certs;
+DROP TABLE IF EXISTS certs1;
 
 
 CREATE TABLE certs(

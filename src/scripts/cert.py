@@ -14,7 +14,8 @@ class Cert:
         "SB Template": "IEEE SB GEC Palakkad",
         "CS Template": "IEEE CS SBC GEC Palakkad",
         "IAS Template": "IEEE IAS SBC GEC Palakkad",
-        "WIE Template": "IEEE WIE AG GEC Palakkad"
+        "WIE Template": "IEEE WIE AG GEC Palakkad",
+        "Excelsior21 Template": "IEEE SB GEC Palakkad"
     }
     certificate_titles = {
         "Participants": "Certificate Of Participation",

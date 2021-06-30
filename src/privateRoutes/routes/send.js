@@ -20,8 +20,8 @@ const resolveTemplateName = (templateName) => {
         "IAS Template - Winners",
         "WIE Template - Participants",
         "WIE Template - Winners",
-        "Excelsior21 - Participants",
-        "Excelsior21 - Winners"
+        "Excelsior21 Template - Participants",
+        "Excelsior21 Template - Winners"
     ];
 
     if (validTemplateTypes.includes(templateName)) {
