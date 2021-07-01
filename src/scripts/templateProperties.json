@@ -316,6 +316,60 @@
       }
     }
   },
+  "Excelsior21FROMCS Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1240,
+        "y": 1500
+      },
+      "college_coords": {
+        "x": 1240
+      },
+      "event_coords": {
+        "x": 1240,
+        "y": 1900
+      },
+      "date_coords": {
+        "x": 1240,
+        "y": 2350
+      },
+      "issuing_organization_coords": {
+        "x": 1240,
+        "y": 2150
+      },
+      "qrcode_coords": {
+        "x": 265,
+        "y": 350
+      }
+    }
+  },
+  "Excelsior21FROMIAS Template": {
+    "Participants": {
+      "name_coords": {
+        "x": 1240,
+        "y": 1500
+      },
+      "college_coords": {
+        "x": 1240
+      },
+      "event_coords": {
+        "x": 1240,
+        "y": 1900
+      },
+      "date_coords": {
+        "x": 1240,
+        "y": 2350
+      },
+      "issuing_organization_coords": {
+        "x": 1240,
+        "y": 2150
+      },
+      "qrcode_coords": {
+        "x": 265,
+        "y": 350
+      }
+    }
+  },
   "Excelsior21CS Template": {
     "Participants": {
       "name_coords": {
