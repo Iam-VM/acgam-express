@@ -132,7 +132,7 @@ class Cert:
             y_text += height
 
         # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING ISSUING ORGANIZATION
-        if self.template_type in ["Excelsior21FROMSB Template", "Excelsior21SB Template", "Excelsior21CS Template", "Excelsior21IAS Template"]:
+        if self.template_type in ["Excelsior21FROMCS Template", "Excelsior21FROMIAS Template", "Excelsior21FROMSB Template", "Excelsior21SB Template", "Excelsior21CS Template", "Excelsior21IAS Template"]:
             lines = textwrap.wrap(self.issuing_organization.upper(), width=32)
             total_text_height = 0
             for line in lines[:2]:
