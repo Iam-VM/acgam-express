@@ -18,7 +18,9 @@ class Cert:
         "Excelsior21SB Template": "IEEE SB GEC Palakkad",
         "Excelsior21FROMSB Template": "IEEE SB GEC Palakkad",
         "Excelsior21CS Template": "IEEE CS SBC GEC Palakkad",
-        "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad"
+        "Excelsior21FROMCS Template": "IEEE CS SBC GEC Palakkad",
+        "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad",
+        "Excelsior21FROMIAS Template": "IEEE IAS SBC GEC Palakkad",
     }
     certificate_titles = {
         "Participants": "Certificate Of Participation",
