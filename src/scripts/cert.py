@@ -119,14 +119,15 @@ class Cert:
             y_text += height
 
         # CALCULATING AND DRAWING FOR EVENT NAME
-        lines = textwrap.wrap(self.event_name.upper(), width=32)
-        # lines = textwrap.wrap(self.event_name.upper(), width=42)
+        # lines = textwrap.wrap(self.event_name.upper(), width=32)
+        lines = textwrap.wrap(self.event_name.upper(), width=42)
         total_text_height = 0
         for line in lines[:2]:
             width, height = d.textsize(line, self.font_for_event)
             total_text_height += height
         y_text = self.event_coords[1]
         for line in lines[:2]:
+            print(line)
             width, height = d.textsize(line, self.font_for_event)
             d.text((self.event_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_event, fill=self.text_color_event)
             y_text += height
