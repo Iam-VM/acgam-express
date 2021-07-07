@@ -68,7 +68,9 @@ class Cert:
         self.text_color_position = '#707071'
         # Face
         self.font_for_name = ImageFont.truetype("./fonts/Philosopher-Bold.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Bold.ttf", 85)
-        self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
+#         self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
+        # temperory:
+        self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 58)
         self.font_for_college = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Regular.ttf", 50)
         self.font_for_issuing_organization = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_date = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
@@ -120,13 +122,13 @@ class Cert:
 
         # CALCULATING AND DRAWING FOR EVENT NAME
         # lines = textwrap.wrap(self.event_name.upper(), width=32)
-        lines = textwrap.wrap(self.event_name.upper(), width=33)
+        lines = textwrap.wrap(self.event_name.upper(), width=31)
         total_text_height = 0
-        for line in lines[:2]:
+        for line in lines[:3]:
             width, height = d.textsize(line, self.font_for_event)
             total_text_height += height
         y_text = self.event_coords[1]
-        for line in lines[:2]:
+        for line in lines[:3]:
             width, height = d.textsize(line, self.font_for_event)
             d.text((self.event_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_event, fill=self.text_color_event)
             y_text += height
