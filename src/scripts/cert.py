@@ -122,7 +122,7 @@ class Cert:
 
         # CALCULATING AND DRAWING FOR EVENT NAME
         # lines = textwrap.wrap(self.event_name.upper(), width=32)
-        lines = textwrap.wrap(self.event_name.upper(), width=31)
+        lines = textwrap.wrap(self.event_name.upper(), width=33)
         total_text_height = 0
         for line in lines[:3]:
             width, height = d.textsize(line, self.font_for_event)
