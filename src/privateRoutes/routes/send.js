@@ -23,7 +23,9 @@ const resolveTemplateName = (templateName) => {
         "Excelsior21SB Template - Participants",
         "Excelsior21FROMSB Template - Participants",
         "Excelsior21CS Template - Participants",
+        "Excelsior21FROMCS Template - Participants",
         "Excelsior21IAS Template - Participants",
+        "Excelsior21FROMIAS Template - Participants",
         "Excelsior21SB Template - Winners"
     ];
 

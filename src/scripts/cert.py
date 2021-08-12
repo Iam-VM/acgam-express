@@ -18,7 +18,9 @@ class Cert:
         "Excelsior21SB Template": "IEEE SB GEC Palakkad",
         "Excelsior21FROMSB Template": "IEEE SB GEC Palakkad",
         "Excelsior21CS Template": "IEEE CS SBC GEC Palakkad",
-        "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad"
+        "Excelsior21FROMCS Template": "IEEE CS SBC GEC Palakkad",
+        "Excelsior21IAS Template": "IEEE IAS SBC GEC Palakkad",
+        "Excelsior21FROMIAS Template": "IEEE IAS SBC GEC Palakkad",
     }
     certificate_titles = {
         "Participants": "Certificate Of Participation",
@@ -66,7 +68,9 @@ class Cert:
         self.text_color_position = '#707071'
         # Face
         self.font_for_name = ImageFont.truetype("./fonts/Philosopher-Bold.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Bold.ttf", 85)
-        self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
+#         self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
+        # temperory:
+        self.font_for_event = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 58)
         self.font_for_college = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Philosopher-Regular.ttf", 50)
         self.font_for_issuing_organization = ImageFont.truetype("./fonts/Poppins-Regular-400.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
         self.font_for_date = ImageFont.truetype("./fonts/Philosopher-Regular.ttf" if (self.execution_mode == 'test') else "src/scripts/fonts/Poppins-SemiBold-600.ttf", 70)
@@ -117,20 +121,20 @@ class Cert:
             y_text += height
 
         # CALCULATING AND DRAWING FOR EVENT NAME
-        lines = textwrap.wrap(self.event_name.upper(), width=32)
-        # lines = textwrap.wrap(self.event_name.upper(), width=42)
+        # lines = textwrap.wrap(self.event_name.upper(), width=32)
+        lines = textwrap.wrap(self.event_name.upper(), width=33)
         total_text_height = 0
-        for line in lines[:2]:
+        for line in lines[:3]:
             width, height = d.textsize(line, self.font_for_event)
             total_text_height += height
         y_text = self.event_coords[1]
-        for line in lines[:2]:
+        for line in lines[:3]:
             width, height = d.textsize(line, self.font_for_event)
             d.text((self.event_coords[0] - width / 2, y_text - total_text_height / 2), line, font=self.font_for_event, fill=self.text_color_event)
             y_text += height
 
         # PREPROCESSING, CALCULATING LINE SIZE AND DRAWING ISSUING ORGANIZATION
-        if self.template_type in ["Excelsior21SB Template", "Excelsior21CS Template", "Excelsior21IAS Template"]:
+        if self.template_type in ["Excelsior21FROMCS Template", "Excelsior21FROMIAS Template", "Excelsior21FROMSB Template", "Excelsior21SB Template", "Excelsior21CS Template", "Excelsior21IAS Template"]:
             lines = textwrap.wrap(self.issuing_organization.upper(), width=32)
             total_text_height = 0
             for line in lines[:2]:

@@ -3,22 +3,44 @@ const path = require('path');
 const sequelize = require('./sequelizeConfig/config');
 const sequelizeAuthenticate = require('./sequelizeConfig/sequelizeInit');
 const socketIO = require('socket.io');
+const admin = require('./firebaseAdmin/admin.js');
 
 const privateRouter = require('./privateRoutes');
 
 
 const app = express();
 const httpServer = require('http').createServer(app);
-const io = socketIO(httpServer);
+const io = socketIO(httpServer, {
+    cors: {
+        origin: "http://localhost:3000",
+    },
+});
 
+const firestore = admin.firestore();
+
+io.use((socket, next) => {
+    const uid = socket.handshake.auth.userID;
+    if (!uid) {
+        return next(new Error("unauthenticated socket"));
+    }
+    socket.uid = uid;
+    next();
+});
 
 io.on("connection", socket => {
-    console.log("Connected");
+    firestore.collection('users').doc(socket.handshake.auth.userID).get()
+        .then((user) => {
+            console.log(`${user.uid} Connected...`);
+        })
+        .catch(err => {
+            console.log(`--------------\nCouldn't real-time connect ${socket.auth}\nReason: ${err}--------------\n`);
+        })
 
     socket.on("disconnect", () => {
-        console.log("disconnected");
+        console.log(`${socket.auth} Disconnected...`);
     });
 });
+
 
 sequelizeAuthenticate(sequelize);
 app.use(express.urlencoded());  // To parse URL-encoded bodies
