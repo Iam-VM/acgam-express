@@ -1,4 +1,5 @@
 .idea
+__pycache__
 node_modules
 .env
 gibberish.txt
@@ -7,3 +8,4 @@ certificateTemplates
 venv
 fileSystem
 generated_certificates
+src/sql/*.csv
